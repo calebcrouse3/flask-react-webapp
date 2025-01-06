@@ -1,0 +1,15 @@
+version: "3"
+
+tasks:
+  lint:
+    desc: Lint the code
+    cmds:
+      - cmd: poetry run black ./backend
+      #- cmd: isort ./backend
+      #- cmd: pylint ./backend
+      #- cmd: mypy ./backend
+      #- cmd: pyright ./backend
+
+  run_server:
+    cmds:
+      - cmd: poetry run python ./backend/main.py

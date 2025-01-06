@@ -1,14 +1,21 @@
 version: "3"
 
-dotenv:
-  - .task.env
+includes:
+  backend: backend/taskfile.yml
+  frontend: frontend/taskfile.yml
 
 tasks:
   lint:
     desc: Lint the code
     cmds:
-      - cmd: black ./backend
-      #- cmd: isort ./backend
-      #- cmd: pylint ./backend
-      #- cmd: mypy ./backend
-      #- cmd: pyright ./backend
+      - task: backend:lint
+
+  run_back:
+    desc: Run the backend server
+    cmds:
+      - task: backend:run_server
+
+  run_front:
+    desc: Run the frontend server
+    cmds:
+      - task: frontend:run_server
